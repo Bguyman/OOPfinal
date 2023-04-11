@@ -27,6 +27,8 @@ class MyMap {
 
     public printMap = () => {
         let burnabyplaces: (IHouse | IClinic)[] = []
+        let burnabyMap: string[] = []
+        let finalMap: string = ""
         for (let house of this._mapData.city.Burnaby.households) {
             burnabyplaces.push(house)
         }
@@ -34,7 +36,24 @@ class MyMap {
             burnabyplaces.push(clinic)
         }
         burnabyplaces.sort((a, b) => a.blockNum - b.blockNum)
+
+        for (let place of burnabyplaces) {
+            let whatIsIt: string = "F" 
+            if (!place.name) {
+            for (let person of place.inhabitants) {
+                if (person.isVaccinated == false) {
+                    whatIsIt = "H"
+                } 
+            }
+        } else {
+            whatIsIt = "C"
+        }
+        burnabyMap.push(whatIsIt)
+        }
+        finalMap = finalMap + burnabyMap.toString() + "// Burnaby" + "\n"
     }
+
+// this code was above was going to individually create the maps for each city, turn them into strings, then marge them together as one string
 
 }
 

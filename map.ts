@@ -54,6 +54,7 @@ class MyMap {
     }
 
 // this code was above was going to individually create the maps for each city, turn them into strings, then marge them together as one string
+// this is as far as I got, sorry
 
 }
 
